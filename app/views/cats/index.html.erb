@@ -1,0 +1,10 @@
+<h1>Cats Index</h1>
+<ul>
+  <% @cats.each do |cat| %>
+  <li>
+  <a href="<%= cat_path(cat) %>"><%= cat.name %></a>
+  </li>
+  <% end %>
+</ul>
+<a href="<%=new_cat_url%>">Register a Cat!</a><br>
+<a href="<%=new_cat_rental_request_url%>">Request a Rental!</a>

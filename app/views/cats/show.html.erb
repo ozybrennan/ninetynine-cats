@@ -1,0 +1,44 @@
+<h1><%= @cat.name %>'s Page!</h1>
+
+<table>
+  <tr>
+    <td>Name:</td>
+    <td><%= @cat.name %></td>
+  </tr>
+
+  <tr>
+    <td>Age:</td>
+    <td><%= @cat.age %></td>
+  </tr>
+
+  <tr>
+    <td>Color:</td>
+    <td><%= @cat.color %></td>
+  </tr>
+
+  <tr>
+    <td>Sex:</td>
+    <td><%= @cat.sex %></td>
+  </tr>
+
+  <tr>
+    <td>Description:</td>
+    <td><%= @cat.description %></td>
+  </tr>
+
+</table>
+
+<ol>
+  <% @cat.not_denied_requests.each do |req| %>
+    <li>
+      <%= req.start_date %> to <%= req.end_date %>
+      <% if req.pending? %>
+        <%= button_to("Approve the Request", cat_rental_request_approval_url(req), method: :get) %>
+        <%= button_to("Deny the Request", cat_rental_request_denial_url(req), method: :get) %>
+      <% end %>
+    </li>
+  <% end %>
+</ol>
+
+<a href="<%=cats_url%>">Index</a><br>
+<a href="<%=edit_cat_url(@cat)%>">Edit</a>
